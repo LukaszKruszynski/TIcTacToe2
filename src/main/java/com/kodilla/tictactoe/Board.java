@@ -25,9 +25,13 @@ public class Board {
     //setFigure powinno zwracac true jezeli udalo sie ustawic figure i tylko wtedy w klasie Game przelaczamy kolor gracza.
     //Dopisac metode sprawdzajaca czy ktos wygral np. isWinner() typu boolean.
     //Wykorzystac metode po kazdym ruchu i jezeli jest koniec gry to przerwac petle w klasie game.
-    public void setFigure(int col, int row, Figure figure) {
-        if (getFigure(col, row) instanceof None)
+    public boolean setFigure(int col, int row, Figure figure) {
+        if (getFigure(col, row) instanceof None) {
             rows.get(row).getCols().set(col, figure);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -44,7 +48,7 @@ public class Board {
         return s;
     }
 
-    public void isWinner() {
+    public boolean isWinner() {
         List<Figure> topRow = new ArrayList<>();
         List<Figure> midRow = new ArrayList<>();
         List<Figure> downRow = new ArrayList<>();
@@ -105,8 +109,17 @@ public class Board {
         winning.add(midCol);
         winning.add(cross1);
         winning.add(cross2);
+
+        if (topRow.get(0) instanceof X && topRow.get(1) instanceof X && topRow.get(2) instanceof X
+                || topRow.get(0) instanceof O && topRow.get(1) instanceof O && topRow.get(2) instanceof O) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
+
+
 
 
 
