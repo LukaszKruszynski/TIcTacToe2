@@ -118,6 +118,7 @@ public class Board {
         }
         return true;
     }
+
     public boolean fullBoard() {
         List<Figure> figures = new ArrayList<Figure>();
         figures.add(leftUpField);
@@ -129,9 +130,18 @@ public class Board {
         figures.add(rightUpField);
         figures.add(rightMidField);
         figures.add(rightDownField);
-        for (Figure figure : figures) {
-            if (figure.equals(!None))
+        for (Figure figure : figures
+        ) {
+            if(figure instanceof X || figure instanceof O) {
+                return false;
+            }
+            System.out.println("Draw.");
         }
+        return true;
     }
 }
+
+
+
+
 
