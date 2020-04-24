@@ -55,35 +55,43 @@ public class Board {
         return getFigure(col, row) instanceof O;
     }
 
+    public boolean isNone(int col, int row) {
+        return getFigure(col, row) instanceof None;
+    }
+
     public boolean isWinner() {
 
         for (int row = 0; row < 3; row++) {
             if (isX(0, row) && isX(1, row) && isX(2, row)) {
-                return false;
+                return true;
             }
         }
         for (int row = 0; row < 3; row++) {
             if (isO(0, row) && isO(1, row) && isO(2, row)) {
-                return false;
+                return true;
             }
         }
         for (int col = 0; col < 3; col++) {
             if (isX(col, 0) && isX(col, 1) && isX(col, 2)) {
-                return false;
+                return true;
             }
         }
         for (int col = 0; col < 3; col++) {
             if (isO(col, 0) && isO(col, 1) && isO(col, 2)) {
-                return false;
+                return true;
             }
         }
         if (isX(0, 0) && isX(1, 1) && isX(2, 2) || isO(0, 0) && isO(1, 1) && isO(2, 2)) {
-            return false;
+            return true;
         }
         if (isX(2, 0) && isX(1, 1) && isX(0, 2) || isO(2, 0) && isO(1, 1) && isO(0, 2)) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    public boolean fullBoard() {
+        return false;
     }
 }
 

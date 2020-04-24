@@ -25,7 +25,12 @@ public class Game {
                 System.out.println("Place is busy! Try again: " + figure + ".");
             } else {
                 isMoveX = !isMoveX;
-                board.isWinner();
+                if(board.isWinner() == true) {
+                    break;
+                }
+                if (board.fullBoard() == true) {
+                    break;
+                }
             }
         }
     }
