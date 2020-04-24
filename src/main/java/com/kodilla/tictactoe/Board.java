@@ -10,6 +10,15 @@ import java.util.List;
 
 public class Board {
 
+    Figure leftUpField = getFigure(0, 0);
+    Figure leftMidField = getFigure(0, 1);
+    Figure leftDownField = getFigure(0, 2);
+    Figure midUpField = getFigure(1, 0);
+    Figure midMidField = getFigure(1, 1);
+    Figure midDownField = getFigure(1, 2);
+    Figure rightUpField = getFigure(2, 0);
+    Figure rightMidField = getFigure(2, 1);
+    Figure rightDownField = getFigure(2, 2);
 
     private List<BoardRow> rows = new ArrayList<>();
 
@@ -59,16 +68,6 @@ public class Board {
         List<Figure> cross2 = new ArrayList<>();
         List<List> winning = new ArrayList<>();
 
-        Figure leftUpField = getFigure(0, 0);
-        Figure leftMidField = getFigure(0, 1);
-        Figure leftDownField = getFigure(0, 2);
-        Figure midUpField = getFigure(1, 0);
-        Figure midMidField = getFigure(1, 1);
-        Figure midDownField = getFigure(1, 2);
-        Figure rightUpField = getFigure(2, 0);
-        Figure rightMidField = getFigure(2, 1);
-        Figure rightDownField = getFigure(2, 2);
-
         topRow.add(leftUpField);
         topRow.add(midUpField);
         topRow.add(rightUpField);
@@ -110,17 +109,29 @@ public class Board {
         winning.add(cross1);
         winning.add(cross2);
 
-        if (topRow.get(0) instanceof X && topRow.get(1) instanceof X && topRow.get(2) instanceof X
-                || topRow.get(0) instanceof O && topRow.get(1) instanceof O && topRow.get(2) instanceof O) {
-            return false;
-        } else {
-            return true;
+        for (List result : winning) {
+            System.out.println(result);
+            if (result.get(0) instanceof X && result.get(1) instanceof X && result.get(2) instanceof X
+                    || result.get(0) instanceof O && result.get(1) instanceof O && result.get(2) instanceof O) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean fullBoard() {
+        List<Figure> figures = new ArrayList<Figure>();
+        figures.add(leftUpField);
+        figures.add(leftMidField);
+        figures.add(leftDownField);
+        figures.add(midUpField);
+        figures.add(midMidField);
+        figures.add(midDownField);
+        figures.add(rightUpField);
+        figures.add(rightMidField);
+        figures.add(rightDownField);
+        for (Figure figure : figures) {
+            if (figure.equals(!None))
         }
     }
 }
-
-
-
-
-
 
