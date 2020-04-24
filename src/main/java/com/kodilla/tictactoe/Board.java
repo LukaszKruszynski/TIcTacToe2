@@ -10,16 +10,6 @@ import java.util.List;
 
 public class Board {
 
-    Figure leftUpField = getFigure(0, 0);
-    Figure leftMidField = getFigure(0, 1);
-    Figure leftDownField = getFigure(0, 2);
-    Figure midUpField = getFigure(1, 0);
-    Figure midMidField = getFigure(1, 1);
-    Figure midDownField = getFigure(1, 2);
-    Figure rightUpField = getFigure(2, 0);
-    Figure rightMidField = getFigure(2, 1);
-    Figure rightDownField = getFigure(2, 2);
-
     private List<BoardRow> rows = new ArrayList<>();
 
     public Board() {
@@ -57,89 +47,53 @@ public class Board {
         return s;
     }
 
+    public boolean isX(int col, int row) {
+        return getFigure(col, row) instanceof X;
+    }
+
+    public boolean isO(int col, int row) {
+        return getFigure(col, row) instanceof O;
+    }
+
     public boolean isWinner() {
-        List<Figure> topRow = new ArrayList<>();
-        List<Figure> midRow = new ArrayList<>();
-        List<Figure> downRow = new ArrayList<>();
-        List<Figure> leftCol = new ArrayList<>();
-        List<Figure> midCol = new ArrayList<>();
-        List<Figure> rightCol = new ArrayList<>();
-        List<Figure> cross1 = new ArrayList<>();
-        List<Figure> cross2 = new ArrayList<>();
-        List<List> winning = new ArrayList<>();
 
-        topRow.add(leftUpField);
-        topRow.add(midUpField);
-        topRow.add(rightUpField);
-
-        midRow.add(leftMidField);
-        midRow.add(midMidField);
-        midRow.add(rightMidField);
-
-        downRow.add(leftDownField);
-        downRow.add(midDownField);
-        downRow.add(rightDownField);
-
-        leftCol.add(leftUpField);
-        leftCol.add(leftMidField);
-        leftCol.add(leftDownField);
-
-        midCol.add(midUpField);
-        midCol.add(midMidField);
-        midCol.add(midDownField);
-
-        rightCol.add(rightUpField);
-        rightCol.add(rightMidField);
-        rightCol.add(rightDownField);
-
-        cross1.add(leftUpField);
-        cross1.add(midMidField);
-        cross1.add(rightDownField);
-
-        cross2.add(rightUpField);
-        cross2.add(midMidField);
-        cross2.add(leftDownField);
-
-        winning.add(topRow);
-        winning.add(midRow);
-        winning.add(downRow);
-        winning.add(leftCol);
-        winning.add(rightCol);
-        winning.add(midCol);
-        winning.add(cross1);
-        winning.add(cross2);
-
-        for (List result : winning) {
-            System.out.println(result);
-            if (result.get(0) instanceof X && result.get(1) instanceof X && result.get(2) instanceof X
-                    || result.get(0) instanceof O && result.get(1) instanceof O && result.get(2) instanceof O) {
+        for (int row = 0; row < 3; row++) {
+            if (isX(0, row) && isX(1, row) && isX(2, row)) {
                 return false;
             }
         }
-        return true;
-    }
-
-    public boolean fullBoard() {
-        List<Figure> figures = new ArrayList<Figure>();
-        figures.add(leftUpField);
-        figures.add(leftMidField);
-        figures.add(leftDownField);
-        figures.add(midUpField);
-        figures.add(midMidField);
-        figures.add(midDownField);
-        figures.add(rightUpField);
-        figures.add(rightMidField);
-        figures.add(rightDownField);
-        for (Figure figure : figures
-        ) {
-            if(figure instanceof X || figure instanceof O) {
+        for (int row = 0; row < 3; row++) {
+            if (isO(0, row) && isO(1, row) && isO(2, row)) {
                 return false;
             }
-            System.out.println("Draw.");
+        }
+        for (int col = 0; col < 3; col++) {
+            if (isX(col, 0) && isX(col, 1) && isX(col, 2)) {
+                return false;
+            }
+        }
+        for (int col = 0; col < 3; col++) {
+            if (isO(col, 0) && isO(col, 1) && isO(col, 2)) {
+                return false;
+            }
+        }
+        if (isX(0, 0) && isX(1, 1) && isX(2, 2) || isO(0, 0) && isO(1, 1) && isO(2, 2)) {
+            return false;
+        }
+        if (isX(2, 0) && isX(1, 1) && isX(0, 2) || isO(2, 0) && isO(1, 1) && isO(0, 2)) {
+            return false;
         }
         return true;
     }
 }
+
+
+
+
+
+
+
+
 
 
 

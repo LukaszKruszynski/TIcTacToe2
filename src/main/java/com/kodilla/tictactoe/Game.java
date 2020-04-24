@@ -22,17 +22,12 @@ public class Game {
             boolean legalMove = board.setFigure(col, row, figure);
             System.out.println(board);
             if (legalMove == false) {
-                isMoveX = isMoveX;
                 System.out.println("Place is busy! Try again: " + figure + ".");
             } else {
                 isMoveX = !isMoveX;
-            }
-            if(board.isWinner() == false) {
-                System.out.println("End of game.\n Winner is: " + figure);
-                break;
-            }else{
-                continue;
+                board.isWinner();
             }
         }
     }
 }
+
