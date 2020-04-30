@@ -26,21 +26,30 @@ public class Game {
             if (legalMove == false) {
                 System.out.println("Place is busy! Try again: " + figure + ".");
             } else {
-                if (isMoveX==true) {
+                if (isMoveX == true) {
                     System.out.println("Turn: O");
-                }else {
+                } else {
                     System.out.println("Turn: X");
                 }
                 isMoveX = !isMoveX;
             }
-            if(board.isWinner()==true) {
-                System.out.println("Winner: "+ board.getFigure(col,row) + ".");
+            if (board.isWinner() == true) {
+                System.out.println("Winner: " + board.getFigure(col, row) + ".");
                 break;
             }
-            if(board.fullBoard()==true) {
+            if (board.fullBoard() == true) {
                 System.out.println("Draw.");
                 break;
             }
         }
     }
 }
+/*Zgodnie z materialem:
+
+-Dodac javaFx i metode start()
+-stworzyc scene i ustawic jej obrazek jako tlo
+-Na scenie umiescic gridPane o rozmiarze 3x3
+-Przygotowac obrazki reprezentujace kolko i krzyzyk
+-wyswietlic sobie jeden z obrazkow w dowolonym polu gridPane'a
+
+ */
