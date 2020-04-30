@@ -3,6 +3,7 @@ package com.kodilla.tictactoe;
 import com.kodilla.tictactoe.figures.Figure;
 import com.kodilla.tictactoe.figures.O;
 import com.kodilla.tictactoe.figures.X;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.Scanner;
 
@@ -13,6 +14,7 @@ public class Game {
     public void run() {
         Board board = new Board();
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Start: X");
         while (true) {
             System.out.println("col:");
             int col = Integer.parseInt(scanner.nextLine());
@@ -24,10 +26,21 @@ public class Game {
             if (legalMove == false) {
                 System.out.println("Place is busy! Try again: " + figure + ".");
             } else {
+                if (isMoveX==true) {
+                    System.out.println("Turn: O");
+                }else {
+                    System.out.println("Turn: X");
+                }
                 isMoveX = !isMoveX;
-                board.isWinner();
+            }
+            if(board.isWinner()==true) {
+                System.out.println("Winner: "+ board.getFigure(col,row) + ".");
+                break;
+            }
+            if(board.fullBoard()==true) {
+                System.out.println("Draw.");
+                break;
             }
         }
     }
 }
-

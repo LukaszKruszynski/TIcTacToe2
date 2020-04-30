@@ -21,16 +21,13 @@ public class Board {
         return rows.get(row).getCols().get(col);
     }
 
-    //setFigure powinno zwracac true jezeli udalo sie ustawic figure i tylko wtedy w klasie Game przelaczamy kolor gracza.
-    //Dopisac metode sprawdzajaca czy ktos wygral np. isWinner() typu boolean.
-    //Wykorzystac metode po kazdym ruchu i jezeli jest koniec gry to przerwac petle w klasie game.
     public boolean setFigure(int col, int row, Figure figure) {
+        boolean emptyPlace = false;
         if (getFigure(col, row) instanceof None) {
             rows.get(row).getCols().set(col, figure);
-            return true;
-        } else {
-            return false;
+            emptyPlace = true;
         }
+        return emptyPlace;
     }
 
     @Override
@@ -55,37 +52,56 @@ public class Board {
         return getFigure(col, row) instanceof O;
     }
 
+    //Check combinations for win.
     public boolean isWinner() {
 
+        //Row combination checker for X.
         for (int row = 0; row < 3; row++) {
             if (isX(0, row) && isX(1, row) && isX(2, row)) {
-                return false;
+                return true;
             }
         }
+        //Row combination checker for O.
         for (int row = 0; row < 3; row++) {
             if (isO(0, row) && isO(1, row) && isO(2, row)) {
-                return false;
+                return true;
             }
         }
+        //Col combination checker for X.
         for (int col = 0; col < 3; col++) {
             if (isX(col, 0) && isX(col, 1) && isX(col, 2)) {
-                return false;
+                return true;
             }
         }
+        //Col combination checker for O.
         for (int col = 0; col < 3; col++) {
             if (isO(col, 0) && isO(col, 1) && isO(col, 2)) {
-                return false;
+                return true;
             }
         }
+        //Cross checker for X and O.
         if (isX(0, 0) && isX(1, 1) && isX(2, 2) || isO(0, 0) && isO(1, 1) && isO(2, 2)) {
-            return false;
+            return true;
         }
         if (isX(2, 0) && isX(1, 1) && isX(0, 2) || isO(2, 0) && isO(1, 1) && isO(0, 2)) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
+    }
+    //Return true when board is full of figures(draw).
+    public boolean fullBoard() {
+        boolean isFullBoard = true;
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                if (getFigure(col, row) instanceof None) {
+                    isFullBoard = false;
+                }
+            }
+        }
+        return isFullBoard;
     }
 }
+
 
 
 
