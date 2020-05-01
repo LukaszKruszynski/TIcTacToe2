@@ -76,14 +76,14 @@ public class TicTacToeFX extends Application {
 
          */
         col0Row0.setOnMouseClicked(setXCol0Row0 -> col0Row0.setImage(imageXShape));
-        col0Row1.setOnMouseClicked(setXCol0Row0 -> col0Row1.setImage(imageXShape));
-        col0Row2.setOnMouseClicked(setXCol0Row0 -> col0Row2.setImage(imageXShape));
-        col1Row0.setOnMouseClicked(setXCol0Row0 -> col1Row0.setImage(imageXShape));
-        col1Row1.setOnMouseClicked(setXCol0Row0 -> col1Row1.setImage(imageXShape));
-        col1Row2.setOnMouseClicked(setXCol0Row0 -> col1Row2.setImage(imageXShape));
-        col2Row0.setOnMouseClicked(setXCol0Row0 -> col2Row0.setImage(imageXShape));
-        col2Row1.setOnMouseClicked(setXCol0Row0 -> col2Row1.setImage(imageXShape));
-        col2Row2.setOnMouseClicked(setXCol0Row0 -> col2Row2.setImage(imageXShape));
+        col0Row1.setOnMouseClicked(setXCol0Row1 -> col0Row1.setImage(imageXShape));
+        col0Row2.setOnMouseClicked(setXCol0Row2 -> col0Row2.setImage(imageXShape));
+        col1Row0.setOnMouseClicked(setXCol1Row0 -> col1Row0.setImage(imageXShape));
+        col1Row1.setOnMouseClicked(setXCol1Row1 -> col1Row1.setImage(imageXShape));
+        col1Row2.setOnMouseClicked(setXCol1Row2 -> col1Row2.setImage(imageXShape));
+        col2Row0.setOnMouseClicked(setXCol2Row0 -> col2Row0.setImage(imageXShape));
+        col2Row1.setOnMouseClicked(setXCol2Row1 -> col2Row1.setImage(imageXShape));
+        col2Row2.setOnMouseClicked(setXCol2Row2 -> col2Row2.setImage(imageXShape));
 
 
         gridPane.setVgap(5);
