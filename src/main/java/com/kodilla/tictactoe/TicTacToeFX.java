@@ -17,12 +17,8 @@ public class TicTacToeFX extends Application {
     private Image imageXShape = new Image("file:src/main/resources/xShape.png");
     private Image imageNoneShape = new Image("file:src/main/resources/noneShape.png");
 
-    public void setShape(int x, int y, Image imageNoneShape) {
-        for(int row = 0; row < 3; row++) {
-            for(int col = 0; col < 3; col++) {
-                setShape(row,col,imageNoneShape);
-            }
-        }
+    public void setImageFigure() {
+
     }
 
     public static void main(String[] args) {
@@ -39,15 +35,15 @@ public class TicTacToeFX extends Application {
 
         ImageView imageViewOShape = new ImageView(imageOShape);
         ImageView imageViewXShape = new ImageView(imageXShape);
-        ImageView imageViewNoneShapeCol0Row0 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol0Row1 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol0Row2 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol1Row0 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol1Row1 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol1Row2 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol2Row0 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol2Row1 = new ImageView(imageNoneShape);
-        ImageView imageViewNoneShapeCol2Row2 = new ImageView(imageNoneShape);
+        ImageView col0Row0 = new ImageView(imageNoneShape);
+        ImageView col0Row1 = new ImageView(imageNoneShape);
+        ImageView col0Row2 = new ImageView(imageNoneShape);
+        ImageView col1Row0 = new ImageView(imageNoneShape);
+        ImageView col1Row1 = new ImageView(imageNoneShape);
+        ImageView col1Row2 = new ImageView(imageNoneShape);
+        ImageView col2Row0 = new ImageView(imageNoneShape);
+        ImageView col2Row1 = new ImageView(imageNoneShape);
+        ImageView col2Row2 = new ImageView(imageNoneShape);
 
         ColumnConstraints col0 = new ColumnConstraints(140);
         ColumnConstraints col1 = new ColumnConstraints(140);
@@ -60,20 +56,26 @@ public class TicTacToeFX extends Application {
         GridPane gridPane = new GridPane();
 
 
-        gridPane.getColumnConstraints().addAll(col0,col1,col2);
-        gridPane.getRowConstraints().addAll(row0,row1,row2);
 
-        gridPane.add(imageViewNoneShapeCol0Row0,0,0);
-        gridPane.add(imageViewNoneShapeCol0Row1,0,1);
-        gridPane.add(imageViewNoneShapeCol0Row2,0,2);
-        gridPane.add(imageViewNoneShapeCol1Row0,1,0);
-        gridPane.add(imageViewNoneShapeCol1Row1,1,1);
-        gridPane.add(imageViewNoneShapeCol1Row2,1,2);
-        gridPane.add(imageViewNoneShapeCol2Row0,2,0);
-        gridPane.add(imageViewNoneShapeCol2Row1,2,1);
-        gridPane.add(imageViewNoneShapeCol2Row2,2,2);
-        gridPane.add(imageViewXShape,1,2);
-        gridPane.add(imageViewOShape,0,0);
+        gridPane.getColumnConstraints().addAll(col0, col1, col2);
+        gridPane.getRowConstraints().addAll(row0, row1, row2);
+        gridPane.getAlignment();
+
+        gridPane.add(col0Row0, 0, 0);
+        gridPane.add(col0Row1, 0, 1);
+        gridPane.add(col0Row2, 0, 2);
+        gridPane.add(col1Row0, 1, 0);
+        gridPane.add(col1Row1, 1, 1);
+        gridPane.add(col1Row2, 1, 2);
+        gridPane.add(col2Row0, 2, 0);
+        gridPane.add(col2Row1, 2, 1);
+        gridPane.add(col2Row2, 2, 2);
+        /*
+        gridPane.add(imageViewXShape, 1, 2);
+        gridPane.add(imageViewOShape, 0, 0);
+
+         */
+        col0Row0.setOnMouseClicked(setXCol0Row0 -> col0Row0.setImage(imageXShape));
 
 
         gridPane.setVgap(5);
