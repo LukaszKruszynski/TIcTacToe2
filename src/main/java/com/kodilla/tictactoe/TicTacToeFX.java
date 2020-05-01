@@ -76,6 +76,14 @@ public class TicTacToeFX extends Application {
 
          */
         col0Row0.setOnMouseClicked(setXCol0Row0 -> col0Row0.setImage(imageXShape));
+        col0Row1.setOnMouseClicked(setXCol0Row0 -> col0Row1.setImage(imageXShape));
+        col0Row2.setOnMouseClicked(setXCol0Row0 -> col0Row2.setImage(imageXShape));
+        col1Row0.setOnMouseClicked(setXCol0Row0 -> col1Row0.setImage(imageXShape));
+        col1Row1.setOnMouseClicked(setXCol0Row0 -> col1Row1.setImage(imageXShape));
+        col1Row2.setOnMouseClicked(setXCol0Row0 -> col1Row2.setImage(imageXShape));
+        col2Row0.setOnMouseClicked(setXCol0Row0 -> col2Row0.setImage(imageXShape));
+        col2Row1.setOnMouseClicked(setXCol0Row0 -> col2Row1.setImage(imageXShape));
+        col2Row2.setOnMouseClicked(setXCol0Row0 -> col2Row2.setImage(imageXShape));
 
 
         gridPane.setVgap(5);
