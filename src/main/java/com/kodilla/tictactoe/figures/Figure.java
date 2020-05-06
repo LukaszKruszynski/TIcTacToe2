@@ -4,6 +4,6 @@ import javafx.scene.image.ImageView;
 
 public class Figure {
     public ImageView getImageView() {
-        return null;
+        return new ImageView();
     }
 }

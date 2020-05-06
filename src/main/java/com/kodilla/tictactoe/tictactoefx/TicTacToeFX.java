@@ -1,8 +1,6 @@
 package com.kodilla.tictactoe.tictactoefx;
 
 import com.kodilla.tictactoe.Board;
-import com.kodilla.tictactoe.Game;
-import com.kodilla.tictactoe.figures.X;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
