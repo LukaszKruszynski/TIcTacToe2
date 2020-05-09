@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class X extends Figure {
-    private Image xImage = new Image("file:resources/xShape.png");
+    private Image xImage = new Image("file:src/main/resources/xShape.png");
     @Override
     public String toString() {
         return "X";

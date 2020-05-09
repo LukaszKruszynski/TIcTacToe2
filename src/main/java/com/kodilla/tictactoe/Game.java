@@ -44,12 +44,3 @@ public class Game {
         }
     }
 }
-/*Zgodnie z materialem:
-
--Dodac javaFx i metode start()
--stworzyc scene i ustawic jej obrazek jako tlo
--Na scenie umiescic gridPane o rozmiarze 3x3
--Przygotowac obrazki reprezentujace kolko i krzyzyk
--wyswietlic sobie jeden z obrazkow w dowolonym polu gridPane'a
-
- */

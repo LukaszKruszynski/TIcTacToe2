@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class None extends Figure {
-    Image noneImage = new Image("file:resources/noneShape.png");
+    Image noneImage = new Image("file:src/main/resources/noneShape.png");
     @Override
     public String toString() {
         return " ";

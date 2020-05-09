@@ -1,6 +1,9 @@
 package com.kodilla.tictactoe.tictactoefx;
 
 import com.kodilla.tictactoe.Board;
+import com.kodilla.tictactoe.figures.None;
+import com.kodilla.tictactoe.figures.O;
+import com.kodilla.tictactoe.figures.X;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -46,21 +49,27 @@ public class TicTacToeFX extends Application {
         primaryStage.setTitle("TicTacToe");
         primaryStage.setScene(scene);
         Board board = new Board();
-        GameFX gameFX = new GameFX(board,gridPane);
+        GameFX gameFX = new GameFX(board, gridPane);
         gameFX.display();
         gridPane.setOnMouseClicked(e -> {
-            System.out.println(e.getX());
-            System.out.println(e.getY());
-            int x = (int)(e.getX()/140);
-            int y = (int)(e.getY()/140);
-            gameFX.move(x,y);
+            int x = (int) (e.getX() / 140);
+            int y = (int) (e.getY() / 140);
+            if (gameFX.checker(x, y)) {
+                gameFX.moveX(x, y);
+            } else {
+                return;
+            }
+            if (gameFX.checker(gameFX.computerMoveO().getRandomX(),))
 
-        } );
+            if (board.fullBoard()) {
+                primaryStage.close();
+            }
+            if (board.isWinner()) {
+                primaryStage.close();
+            }
+        });
+
         primaryStage.show();
     }
 }
-
-
-
-
 
