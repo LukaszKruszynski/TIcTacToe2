@@ -59,7 +59,7 @@ public class TicTacToeFX extends Application {
             } else {
                 return;
             }
-            if (gameFX.checker(gameFX.computerMoveO().getRandomX(),))
+            gameFX.computerMoveO();
 
             if (board.fullBoard()) {
                 primaryStage.close();

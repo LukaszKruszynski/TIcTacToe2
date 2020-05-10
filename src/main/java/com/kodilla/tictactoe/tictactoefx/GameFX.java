@@ -7,6 +7,8 @@ import com.kodilla.tictactoe.figures.O;
 import com.kodilla.tictactoe.figures.X;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameFX {
@@ -45,26 +47,22 @@ public class GameFX {
         display();
     }
 
-    public int randomGeneratorX() {
-        Random randomForX = new Random();
-        int randomX = randomForX.nextInt(3);
-        return randomX;
-    }
+    public void computerMoveO() {
+        List<IntDto> list = new ArrayList<>();
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                if (board.getFigure(y, x) instanceof None) {
+                    list.add(new IntDto(x, y));
+                }
+            }
+        }
 
-    public int randomGeneratorO() {
         Random randomForO = new Random();
-        int randomO = randomForO.nextInt(3);
-        return randomO;
-    }
-
-    public IntDto computerMoveO() {
-        Random randomForO = new Random();
-        int randomO = randomForO.nextInt(3);
-        Random randomForX = new Random();
-        int randomX = randomForX.nextInt(3);
-        board.setFigure(randomX,randomO, new O());
+        int randomO = randomForO.nextInt(list.size());
+        IntDto dto = list.get(randomO);
+        System.out.println("X " + dto.getX() + " . " + " Y " + dto.getO());
+        board.setFigure(dto.getO(), dto.getX(), new O());
         display();
-        return new IntDto(randomX,randomO);
 
     }
 }

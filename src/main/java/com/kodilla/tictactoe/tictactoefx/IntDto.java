@@ -1,19 +1,19 @@
 package com.kodilla.tictactoe.tictactoefx;
 
 public class IntDto {
-    int randomX;
-    int randomO;
+    int x;
+    int o;
 
     public IntDto(int randomX, int randomO) {
-        this.randomX = randomX;
-        this.randomO = randomO;
+        this.x = randomX;
+        this.o = randomO;
     }
 
-    public int getRandomX() {
-        return randomX;
+    public int getX() {
+        return x;
     }
 
-    public int getRandomO() {
-        return randomO;
+    public int getO() {
+        return o;
     }
 }
