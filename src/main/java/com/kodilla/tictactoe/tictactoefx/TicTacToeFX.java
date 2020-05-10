@@ -1,15 +1,16 @@
 package com.kodilla.tictactoe.tictactoefx;
 
 import com.kodilla.tictactoe.Board;
-import com.kodilla.tictactoe.figures.None;
-import com.kodilla.tictactoe.figures.O;
-import com.kodilla.tictactoe.figures.X;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 public class TicTacToeFX extends Application {
 
@@ -61,15 +62,39 @@ public class TicTacToeFX extends Application {
             }
             gameFX.computerMoveO();
 
-            if (board.fullBoard()) {
-                primaryStage.close();
+            if (board.fullBoard() && !board.checkWinner().isWinner()) {
+                Alert alertWhoWins = gameFX.showAlertDraw();
+                Optional<ButtonType> result = alertWhoWins.showAndWait();
+                if (result.isPresent()) {
+                    if (result.get() == ButtonType.OK) {
+                        try {
+                            start(primaryStage);
+                        } catch (Exception exception) {
+                            exception.printStackTrace();
+                        }
+                    } else {
+                        primaryStage.close();
+                    }
+                }
             }
-            if (board.isWinner()) {
-                primaryStage.close();
+        if (board.checkWinner().isWinner()) {
+            Alert alertWhoWins = gameFX.showAlertWin(board.checkWinner().getWhoWins());
+            Optional<ButtonType> result = alertWhoWins.showAndWait();
+            if (result.isPresent()) {
+                if (result.get() == ButtonType.OK) {
+                    try {
+                        start(primaryStage);
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else {
+                    primaryStage.close();
+                }
             }
-        });
+        }
+    });
 
         primaryStage.show();
-    }
+}
 }
 

@@ -5,6 +5,9 @@ import com.kodilla.tictactoe.figures.Figure;
 import com.kodilla.tictactoe.figures.None;
 import com.kodilla.tictactoe.figures.O;
 import com.kodilla.tictactoe.figures.X;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
@@ -56,13 +59,39 @@ public class GameFX {
                 }
             }
         }
+        if (list.size() > 0) {
+            Random randomForO = new Random();
+            int randomO = randomForO.nextInt(list.size());
+            IntDto dto = list.get(randomO);
+            board.setFigure(dto.getO(), dto.getX(), new O());
+            display();
+        }
+    }
 
-        Random randomForO = new Random();
-        int randomO = randomForO.nextInt(list.size());
-        IntDto dto = list.get(randomO);
-        System.out.println("X " + dto.getX() + " . " + " Y " + dto.getO());
-        board.setFigure(dto.getO(), dto.getX(), new O());
-        display();
+    public Alert showAlertWin(String winner) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Result of round");
+        alert.setHeaderText(null);
+        alert.setContentText("Winner: " + winner);
+        alert = generateButtons(alert);
+        return alert;
+    }
 
+    public Alert showAlertDraw() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Result of round");
+        alert.setHeaderText(null);
+        alert.setContentText("Is a draw.");
+        alert = generateButtons(alert);
+        return alert;
+    }
+
+    public Alert generateButtons(Alert alert) {
+        Button okButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
+        okButton.setText("Play again");
+        Button cancelButton = (Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL);
+        cancelButton.setText("Close");
+        return alert;
     }
 }
+
